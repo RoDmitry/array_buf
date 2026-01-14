@@ -2,7 +2,7 @@
 name = "array_buf"
 version = "0.1.0"
 authors = ["Dmitry Rodionov <gh@rdmtr.com>"]
-description = "Highly optimized fixed-capacity deque buffer stored on stack"
+description = "Highly optimized fixed-capacity deque buffer stored on the stack"
 documentation = "https://docs.rs/array_buf/"
 repository = "https://github.com/RoDmitry/array_buf"
 categories = ["data-structures", "no-std"]

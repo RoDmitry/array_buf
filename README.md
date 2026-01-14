@@ -3,7 +3,7 @@
 [![Crate](https://img.shields.io/crates/v/array_buf.svg)](https://crates.io/crates/array_buf)
 [![API](https://docs.rs/array_buf/badge.svg)](https://docs.rs/array_buf)
 
-Highly optimized fixed-capacity deque buffer stored on stack.
+Highly optimized fixed-capacity deque buffer stored on the stack.
 
 ### Todo:
 
