@@ -1,0 +1,22 @@
+[package]
+name = "array_buf"
+version = "0.1.0"
+authors = ["Dmitry Rodionov <gh@rdmtr.com>"]
+description = "Highly optimized fixed-capacity deque buffer stored on stack"
+documentation = "https://docs.rs/array_buf/"
+repository = "https://github.com/RoDmitry/array_buf"
+categories = ["data-structures", "no-std"]
+keywords = ["array", "queue", "deque", "ring", "circular"]
+include = ["src"]
+readme = "README.md"
+license = "MIT OR Apache-2.0"
+edition = "2024"
+rust-version = "1.93.0" # can be easily lowered: `assume_init_ref`, `assume_init_mut`
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[features]
+default = ["std"]
+std = []
