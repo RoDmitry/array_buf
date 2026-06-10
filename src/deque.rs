@@ -123,7 +123,7 @@ impl<T, const CAP: usize> ArrayDequeBase<T, CAP> {
     /// assert_eq!(buf.len(), 1);
     /// ```
     #[inline]
-    pub fn len(&self) -> usize {
+    pub const fn len(&self) -> usize {
         if self.full {
             self.capacity()
         } else {
@@ -146,7 +146,7 @@ impl<T, const CAP: usize> ArrayDequeBase<T, CAP> {
     /// assert!(!buf.is_empty());
     /// ```
     #[inline]
-    pub fn is_empty(&self) -> bool {
+    pub const fn is_empty(&self) -> bool {
         self.start == self.end && !self.full
     }
 
@@ -166,18 +166,18 @@ impl<T, const CAP: usize> ArrayDequeBase<T, CAP> {
     /// assert!(buf.is_full());
     /// ```
     #[inline(always)]
-    pub fn is_full(&self) -> bool {
+    pub const fn is_full(&self) -> bool {
         self.full
     }
 
     /// Order can be compromised once full.
     #[inline]
-    pub fn is_contiguous_any_order(&self) -> bool {
+    pub const fn is_contiguous_any_order(&self) -> bool {
         self.start <= self.end
     }
 
     #[inline]
-    pub fn is_contiguous(&self) -> bool {
+    pub const fn is_contiguous(&self) -> bool {
         self.start <= self.end && !self.full
     }
 
@@ -585,7 +585,7 @@ impl<T, const CAP: usize> ArrayDequeBase<T, CAP> {
     /// assert!(buf.is_contiguous());
     /// ```
     #[inline]
-    pub fn linearize(&mut self) {
+    pub const fn linearize(&mut self) {
         if self.start > 0 {
             self.arr.rotate_left(self.start);
             self.end = self.end.wrapping_sub(self.start) & Self::MAX_IDX;
@@ -628,7 +628,7 @@ impl<T, const CAP: usize> ArrayDequeBase<T, CAP> {
 
     /// Clears the buffer by resetting the indexes.
     #[inline]
-    pub fn clear(&mut self) {
+    pub const fn clear(&mut self) {
         self.start = 0;
         self.end = 0;
         self.full = false;
@@ -700,7 +700,7 @@ macro_rules! reimpl_common_methods {
                 ```
             ")]
             #[inline(always)]
-            pub fn len(&self) -> usize {
+            pub const fn len(&self) -> usize {
                 self.0.len()
             }
 
@@ -721,7 +721,7 @@ macro_rules! reimpl_common_methods {
                 ```
             ")]
             #[inline(always)]
-            pub fn is_empty(&self) -> bool {
+            pub const fn is_empty(&self) -> bool {
                 self.0.is_empty()
             }
 
@@ -743,18 +743,18 @@ macro_rules! reimpl_common_methods {
                 ```
             ")]
             #[inline(always)]
-            pub fn is_full(&self) -> bool {
+            pub const fn is_full(&self) -> bool {
                 self.0.is_full()
             }
 
             /// Order can be compromised once full.
             #[inline(always)]
-            pub fn is_contiguous_any_order(&self) -> bool {
+            pub const fn is_contiguous_any_order(&self) -> bool {
                 self.0.is_contiguous_any_order()
             }
 
             #[inline(always)]
-            pub fn is_contiguous(&self) -> bool {
+            pub const fn is_contiguous(&self) -> bool {
                 self.0.is_contiguous()
             }
 
@@ -1094,7 +1094,7 @@ macro_rules! reimpl_common_methods {
                 ```
             ")]
             #[inline(always)]
-            pub fn linearize(&mut self) {
+            pub const fn linearize(&mut self) {
                 self.0.linearize()
             }
 
